@@ -1,52 +1,40 @@
 # include<iostream>
 using namespace std;
-void swap(int* arr,int size,int min,int max)
+void round(int* grades,int size)
 {
-	for (int i = 0; i < size; i++)
-	{
-		if (arr[i] == max)
-		{
-			arr[i] = min;
+	for (int i = 0; i < size; i++) 
+	{   
+	
+		while (grades[i] > 37 && grades[i] < 40) {
+		
+			grades[i] += 1;
+		
 		}
-		else if (arr[i] == min)
+		if (grades[i] < 38) {}
+		for (int i = 0; i <size; i++)
 		{
-			arr[i] = max;
-		}
+			if (grades[i] >= 38 && (grades[i] % 5) > 2)
+			{
+				grades[i] = grades[i] + 5 - grades[i] % 5;
+			}
 	}
+	}
+	
 	
 }
 int main()
 {
 	int Number,min,max,i;
 	cin >> Number;
-	int *arr = new int[Number];
+	int *grades = new int[Number];
 	cout << "enter the array" << endl;
 	for ( i = 0; i < Number; i++)
-		cin >> arr[i];
+		cin >> grades[i];
 	cout << Number<<endl;
-	for ( i = 0; i < Number; i++)
-	{
-		cout << arr[i];
-	}
-	min = arr[0];
 	for (i = 0; i < Number; i++)
-	{
-		if (min > arr[i])
-			min = arr[i];
-	}
-	max = arr[0];
-	for ( i = 0; i < Number; i++)
-	{
-		if (max < arr[i])
-			max = arr[i];
-		
-	}
-	swap(arr, Number, min, max);
- 
- cout << "array after swaping" << endl;
- for (int i = 0; i < Number ; i++)
- {
-	 cout << arr[i];
- }
+		cout<< grades[i]<<endl;
+	round(grades, Number);
+	for (i = 0; i < Number; i++)
+		cout << grades[i]<<endl;
  return 0;
 }
